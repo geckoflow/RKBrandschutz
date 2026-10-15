@@ -1,0 +1,9 @@
+# Nur relevant bei Apache-Hosting; andere Server ignorieren diese Datei.
+
+ErrorDocument 404 /404.html
+
+# Alte WordPress-Bildpfade auf die neue Struktur umleiten
+RedirectMatch 301 ^/wp-content/uploads/(.*)$ /assets/uploads/$1
+
+# WordPress-Feeds gibt es nicht mehr
+RedirectMatch 301 ^/(comments/)?feed/?$ /
