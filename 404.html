@@ -5,17 +5,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Seite nicht gefunden &#8211; RK Brandschutztechnik</title>
 	<meta name="robots" content="noindex">
-	<link rel="stylesheet" href="/assets/css/wp-core.css">
-	<link rel="stylesheet" href="/assets/css/dashicons.min.css">
-	<link rel="stylesheet" href="/assets/css/scroll-to-top.css">
-	<link rel="stylesheet" href="/assets/css/fonts.css">
-	<link rel="stylesheet" href="/assets/css/style.css">
-	<link rel="stylesheet" href="/assets/css/blocks.css">
-	<link rel="stylesheet" href="/assets/css/theme-custom.css">
-	<script src="/assets/js/jquery.min.js"></script>
-	<script src="/assets/js/jquery-migrate.min.js"></script>
-	<script src="/assets/js/config.js"></script>
-	<script src="/assets/js/scroll-to-top.js"></script>
+	<script>
+		/* Die 404-Seite wird unter beliebigen URLs ausgeliefert, daher den Wurzelpfad der Website
+		   ermitteln: auf GitHub Pages (Projektseite) "/<Repository>/", sonst "/". */
+		var siteRoot = '/';
+		if (/\.github\.io$/.test(location.hostname)) {
+			var firstSegment = location.pathname.split('/')[1];
+			if (firstSegment) siteRoot = '/' + firstSegment + '/';
+		}
+		['wp-core.css', 'dashicons.min.css', 'scroll-to-top.css', 'fonts.css', 'style.css', 'blocks.css', 'theme-custom.css'].forEach(function (f) {
+			document.write('<link rel="stylesheet" href="' + siteRoot + 'assets/css/' + f + '">');
+		});
+		['jquery.min.js', 'jquery-migrate.min.js', 'config.js', 'scroll-to-top.js'].forEach(function (f) {
+			document.write('<script src="' + siteRoot + 'assets/js/' + f + '"><\/script>');
+		});
+	</script>
+	<noscript>
+		<link rel="stylesheet" href="/assets/css/wp-core.css">
+		<link rel="stylesheet" href="/assets/css/dashicons.min.css">
+		<link rel="stylesheet" href="/assets/css/scroll-to-top.css">
+		<link rel="stylesheet" href="/assets/css/fonts.css">
+		<link rel="stylesheet" href="/assets/css/style.css">
+		<link rel="stylesheet" href="/assets/css/blocks.css">
+		<link rel="stylesheet" href="/assets/css/theme-custom.css">
+	</noscript>
 </head>
 
 <body class="wp-singular page-template-default page page-id-68 wp-embed-responsive wp-theme-scapeshot-pro group-blog fluid-layout navigation-full-screen no-sidebar full-width-layout excerpt color-scheme-default has-header-media absolute-header has-header-text has-social-floating">
@@ -209,8 +222,19 @@ office@rk-brandschutz.at
 
 </div><!-- #page -->
 
-<span id="cwt_to_top_scrollup" class="dashicons dashicons-arrow-up-alt2"><span class="screen-reader-text">Scroll Up</span></span><script src="/assets/js/skip-link-focus-fix.min.js"></script>
-<script src="/assets/js/functions.min.js"></script>
+<span id="cwt_to_top_scrollup" class="dashicons dashicons-arrow-up-alt2"><span class="screen-reader-text">Scroll Up</span></span><script>
+	/* Links auf den Wurzelpfad umschreiben, falls die Website in einem Unterordner liegt */
+	if (siteRoot !== '/') {
+		var links = document.querySelectorAll('a[href^="/"]');
+		for (var i = 0; i < links.length; i++) {
+			var href = links[i].getAttribute('href');
+			if (href.charAt(1) !== '/') links[i].setAttribute('href', siteRoot + href.slice(1));
+		}
+	}
+	['skip-link-focus-fix.min.js', 'functions.min.js'].forEach(function (f) {
+		document.write('<script src="' + siteRoot + 'assets/js/' + f + '"><\/script>');
+	});
+</script>
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="icon-behance" viewBox="0 0 37 32">

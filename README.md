@@ -16,7 +16,7 @@ gallery/                  Galerie
 kontakt/                  Kontakt
 impressum/                Impressum
 datenschutz/              Datenschutz
-404.html                  Fehlerseite (verwendet absolute Pfade /assets/…)
+404.html                  Fehlerseite (ermittelt den Wurzelpfad selbst: „/“ oder auf GitHub Pages „/<Repo>/“)
 assets/css/               Theme-CSS (Scapeshot Pro), WordPress-Block-Styles, Poppins-@font-face
 assets/fonts/             Poppins (woff2) und Dashicons, lokal gehostet
 assets/js/                jQuery, Owl Carousel, Theme-Skripte, config.js (Theme-Optionen)
